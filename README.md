@@ -3,38 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GA Manager - Marketing Digital Freelance</title>
+    <title>Freelance Marketing Digital | Votre Nom</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        
         .hero-gradient {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        
-        .service-card:hover {
+        .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        
-        .project-card {
+        .stats-item {
             transition: all 0.3s ease;
         }
-        
-        .project-card:hover {
-            transform: scale(1.02);
+        .stats-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
-        
         .nav-link {
             position: relative;
         }
-        
         .nav-link:after {
             content: '';
             position: absolute;
@@ -42,148 +30,163 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background-color: #3b82f6;
+            background-color: white;
             transition: width 0.3s ease;
         }
-        
         .nav-link:hover:after {
             width: 100%;
         }
-        
-        .active-nav:after {
-            width: 100%;
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
     </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="font-sans antialiased text-gray-800">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="#" class="text-xl font-semibold text-gray-900">GA Manager</a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="nav-link text-gray-600 hover:text-gray-900">Services</a>
-                    <a href="#portfolio" class="nav-link text-gray-600 hover:text-gray-900">Réalisations</a>
-                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-900">À propos</a>
-                    <a href="#contact" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Contact</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="menu-btn" class="text-gray-500 hover:text-gray-900">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
+    <nav class="bg-indigo-900 text-white shadow-lg fixed w-full z-10">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-chart-line text-2xl text-indigo-300"></i>
+                <span class="font-bold text-xl">VotreNom</span>
             </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link">Accueil</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#portfolio" class="nav-link">Réalisations</a>
+                <a href="#stats" class="nav-link">Performances</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#cv" class="bg-white text-indigo-900 px-4 py-2 rounded-md font-medium hover:bg-indigo-100 transition duration-300">Télécharger CV</a>
+            </div>
+            <button class="md:hidden focus:outline-none" id="menu-btn">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </div>
-        
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Services</a>
-                <a href="#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Réalisations</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">À propos</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-blue-600 hover:bg-blue-700">Contact</a>
+        <div class="md:hidden hidden bg-indigo-800 w-full px-6 py-4" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="block hover:text-indigo-200">Accueil</a>
+                <a href="#services" class="block hover:text-indigo-200">Services</a>
+                <a href="#portfolio" class="block hover:text-indigo-200">Réalisations</a>
+                <a href="#stats" class="block hover:text-indigo-200">Performances</a>
+                <a href="#contact" class="block hover:text-indigo-200">Contact</a>
+                <a href="#cv" class="block bg-white text-indigo-900 px-4 py-2 rounded-md font-medium text-center">Télécharger CV</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient pt-24 pb-16 md:pt-32 md:pb-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="md:flex md:items-center md:justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">Optimisez votre présence digitale</h1>
-                    <p class="text-xl text-gray-600 mb-8">Stratégies marketing sur mesure pour booster votre visibilité et vos conversions.</p>
-                    <div class="flex space-x-4">
-                        <a href="#contact" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Discutons de votre projet</a>
-                        <a href="#services" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition">Nos services</a>
-                    </div>
+    <section id="home" class="hero-gradient text-white pt-24 pb-16 md:pt-32 md:pb-24">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Boostez votre présence digitale</h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">Stratégies marketing sur mesure pour propulser votre business en ligne.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-white text-indigo-900 px-6 py-3 rounded-md font-bold text-center hover:bg-indigo-100 transition duration-300">Discutons de votre projet</a>
+                    <a href="#services" class="border-2 border-white px-6 py-3 rounded-md font-bold text-center hover:bg-white hover:text-indigo-900 transition duration-300">Voir mes services</a>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Marketing Digital" class="rounded-lg shadow-xl w-full max-w-md">
-                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Marketing Digital" class="rounded-lg shadow-2xl w-full max-w-md animate-float">
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Nos services</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Des solutions adaptées à vos besoins pour maximiser votre impact digital.</p>
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Services</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">Des solutions digitales complètes pour répondre à tous vos besoins marketing.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md border border-gray-100 transition duration-300">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-chart-line text-blue-600 text-xl"></i>
+                <div class="bg-white p-8 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-bullseye text-4xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Analyse & Stratégie</h3>
-                    <p class="text-gray-600 mb-4">Audit complet de votre présence digitale et élaboration d'une stratégie sur mesure pour atteindre vos objectifs.</p>
+                    <h3 class="text-xl font-bold mb-3">Stratégie Marketing</h3>
+                    <p class="text-gray-600 mb-4">Élaboration d'une stratégie digitale sur mesure pour atteindre vos objectifs business.</p>
                     <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Audit analytique
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Définition KPI
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Roadmap stratégique
-                        </li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Audit complet</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Plan d'action détaillé</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> KPI de performance</li>
                     </ul>
                 </div>
                 
                 <!-- Service 2 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md border border-gray-100 transition duration-300">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-ad text-blue-600 text-xl"></i>
+                <div class="bg-white p-8 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-ad text-4xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Publicité Digitale</h3>
-                    <p class="text-gray-600 mb-4">Campagnes publicitaires performantes sur les principales plateformes (Google Ads, Meta, LinkedIn).</p>
+                    <h3 class="text-xl font-bold mb-3">Publicité en Ligne</h3>
+                    <p class="text-gray-600 mb-4">Campagnes publicitaires performantes sur Google Ads, Facebook Ads et réseaux sociaux.</p>
                     <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Campagnes SEA
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Publicité sociale
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Optimisation ROI
-                        </li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Ciblage précis</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Optimisation continue</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> ROI maximisé</li>
                     </ul>
                 </div>
                 
                 <!-- Service 3 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md border border-gray-100 transition duration-300">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-tools text-blue-600 text-xl"></i>
+                <div class="bg-white p-8 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-search-dollar text-4xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Optimisation & Tracking</h3>
-                    <p class="text-gray-600 mb-4">Mise en place et optimisation des outils d'analyse pour mesurer et améliorer vos performances.</p>
+                    <h3 class="text-xl font-bold mb-3">SEO & Content</h3>
+                    <p class="text-gray-600 mb-4">Optimisation pour les moteurs de recherche et création de contenu engageant.</p>
                     <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Google Analytics 4
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Google Tag Manager
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
-                            Tableaux de bord
-                        </li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Recherche de mots-clés</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Stratégie éditoriale</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Netlinking</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-chart-pie text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Analyse & Reporting</h3>
+                    <p class="text-gray-600 mb-4">Suivi précis des performances et recommandations d'optimisation.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Tableaux de bord</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Analyses approfondies</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Rapports mensuels</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-envelope-open-text text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Email Marketing</h3>
+                    <p class="text-gray-600 mb-4">Campagnes emailing performantes pour fidéliser et convertir vos clients.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Automatisation</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Personnalisation</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> A/B Testing</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-md card-hover transition duration-300">
+                    <div class="text-indigo-600 mb-4">
+                        <i class="fas fa-users text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Réseaux Sociaux</h3>
+                    <p class="text-gray-600 mb-4">Gestion et animation de vos communautés sur les principales plateformes sociales.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Stratégie de contenu</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Community management</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Publicités sociales</li>
                     </ul>
                 </div>
             </div>
@@ -191,177 +194,225 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Nos réalisations</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Découvrez quelques-uns de nos projets récents et leurs résultats.</p>
+    <section id="portfolio" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Réalisations</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">Découvrez quelques-uns de mes projets récents et les résultats obtenus.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="h-48 bg-blue-100 flex items-center justify-center">
-                        <i class="fas fa-shopping-cart text-blue-600 text-5xl"></i>
-                    </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Projet E-commerce" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">E-commerce Mode</h3>
-                        <p class="text-gray-600 mb-4">Stratégie digitale complète pour une marque de prêt-à-porter.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">Google Ads • Meta Ads</span>
-                            <span class="text-sm font-medium text-blue-600">+45% de CA</span>
+                        <h3 class="text-xl font-bold mb-2">Boutique E-commerce</h3>
+                        <p class="text-gray-600 mb-4">Stratégie marketing complète pour une boutique en ligne de produits artisanaux.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SEO</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Facebook Ads</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Email Marketing</span>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium">Augmentation du CA:</span>
+                                <span class="font-bold text-green-600">+320%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium">ROI publicitaire:</span>
+                                <span class="font-bold text-green-600">5.8x</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="h-48 bg-green-100 flex items-center justify-center">
-                        <i class="fas fa-graduation-cap text-green-600 text-5xl"></i>
-                    </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" alt="Projet SaaS" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Formation en ligne</h3>
-                        <p class="text-gray-600 mb-4">Optimisation des campagnes pour une plateforme éducative.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">LinkedIn Ads • Analytics</span>
-                            <span class="text-sm font-medium text-blue-600">-30% de CPA</span>
+                        <h3 class="text-xl font-bold mb-2">Application SaaS B2B</h3>
+                        <p class="text-gray-600 mb-4">Campagne de lead generation pour une solution logicielle professionnelle.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">LinkedIn Ads</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Content Marketing</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Webinars</span>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium">Leads générés:</span>
+                                <span class="font-bold text-green-600">1,250+</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium">Coût par lead:</span>
+                                <span class="font-bold text-green-600">€18.50</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="h-48 bg-purple-100 flex items-center justify-center">
-                        <i class="fas fa-utensils text-purple-600 text-5xl"></i>
-                    </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projet Restaurant" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Restaurant gastronomique</h3>
-                        <p class="text-gray-600 mb-4">Stratégie digitale locale et gestion des réservations en ligne.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">Local SEO • Google My Business</span>
-                            <span class="text-sm font-medium text-blue-600">+80% réservations</span>
+                        <h3 class="text-xl font-bold mb-2">Restaurant Gastronomique</h3>
+                        <p class="text-gray-600 mb-4">Stratégie digitale pour augmenter la notoriété et les réservations en ligne.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Instagram</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Google My Business</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Influenceurs</span>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium">Réservations en ligne:</span>
+                                <span class="font-bold text-green-600">+175%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium">Engagement Instagram:</span>
+                                <span class="font-bold text-green-600">+420%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-12">
-                <a href="#contact" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition inline-flex items-center">
-                    Voir plus de réalisations
-                    <i class="fas fa-arrow-right ml-2"></i>
+                <a href="#" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-md font-bold hover:bg-indigo-700 transition duration-300">
+                    Voir plus de réalisations <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="md:flex md:items-center md:space-x-12">
-                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-                    <div class="w-64 h-64 rounded-full bg-gray-100 overflow-hidden shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="GA Manager" class="w-full h-full object-cover">
+    <!-- Stats Section -->
+    <section id="stats" class="py-16 bg-indigo-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Performances</h2>
+                <div class="w-20 h-1 bg-white mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-lg text-indigo-200">Des résultats concrets pour mes clients grâce à des stratégies data-driven.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Stat 1 -->
+                <div class="bg-indigo-800 p-8 rounded-lg text-center stats-item">
+                    <div class="text-5xl font-bold mb-2">150+</div>
+                    <div class="text-xl font-medium">Projets réalisés</div>
+                    <div class="mt-4 text-indigo-300">
+                        <i class="fas fa-check-circle text-2xl"></i>
                     </div>
                 </div>
-                <div class="md:w-2/3">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">À propos de GA Manager</h2>
-                    <p class="text-gray-600 mb-6 text-lg">
-                        Passionné par le marketing digital et l'analyse de données, j'accompagne les entreprises dans l'optimisation de leur présence en ligne depuis plus de 5 ans. Mon approche combine expertise technique et vision stratégique pour des résultats concrets et mesurables.
-                    </p>
-                    <p class="text-gray-600 mb-8 text-lg">
-                        Formé aux dernières technologies et méthodologies, je mets mon savoir-faire au service de votre croissance, avec une attention particulière portée à vos objectifs business et à votre retour sur investissement.
-                    </p>
+                
+                <!-- Stat 2 -->
+                <div class="bg-indigo-800 p-8 rounded-lg text-center stats-item">
+                    <div class="text-5xl font-bold mb-2">12M€</div>
+                    <div class="text-xl font-medium">CA généré</div>
+                    <div class="mt-4 text-indigo-300">
+                        <i class="fas fa-euro-sign text-2xl"></i>
+                    </div>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div class="bg-indigo-800 p-8 rounded-lg text-center stats-item">
+                    <div class="text-5xl font-bold mb-2">5.2x</div>
+                    <div class="text-xl font-medium">ROI moyen</div>
+                    <div class="mt-4 text-indigo-300">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                </div>
+                
+                <!-- Stat 4 -->
+                <div class="bg-indigo-800 p-8 rounded-lg text-center stats-item">
+                    <div class="text-5xl font-bold mb-2">98%</div>
+                    <div class="text-xl font-medium">Clients satisfaits</div>
+                    <div class="mt-4 text-indigo-300">
+                        <i class="fas fa-smile text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white bg-opacity-10 rounded-xl p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Témoignages clients</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-indigo-800 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center">
+                                <i class="fas fa-user text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-bold">Marie D.</div>
+                                <div class="text-indigo-300">Directrice Marketing</div>
+                            </div>
+                        </div>
+                        <p class="text-indigo-100 italic">"Grâce à la stratégie digitale mise en place, nous avons multiplié notre trafic par 5 en seulement 6 mois. Un professionnel à l'écoute et très réactif."</p>
+                        <div class="mt-4 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
                     
-                    <div class="flex flex-wrap gap-4">
-                        <a href="https://www.malt.fr/profile/gamanager" target="_blank" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition flex items-center">
-                            <i class="fab fa-malt text-xl mr-2"></i>
-                            Profil Malt
-                        </a>
-                        <a href="https://www.linkedin.com/in/gamanager" target="_blank" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition flex items-center">
-                            <i class="fab fa-linkedin-in text-xl mr-2"></i>
-                            LinkedIn
-                        </a>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-indigo-800 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center">
+                                <i class="fas fa-user text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-bold">Thomas L.</div>
+                                <div class="text-indigo-300">CEO Startup</div>
+                            </div>
+                        </div>
+                        <p class="text-indigo-100 italic">"Notre campagne Facebook Ads a été optimisée avec une précision remarquable. Résultat: un coût d'acquisition divisé par 3 tout en augmentant le volume de ventes."</p>
+                        <div class="mt-4 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Ils nous font confiance</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Retours d'expérience de nos clients satisfaits.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
-                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Client" class="w-full h-full object-cover">
+    <!-- CV Download Section -->
+    <section id="cv" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-indigo-600 text-white p-8 md:p-12 flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold mb-4">Mon Curriculum Vitae</h2>
+                        <p class="mb-6 text-indigo-100">Téléchargez mon CV complet pour découvrir mon parcours, mes compétences et mes certifications en marketing digital.</p>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center">
+                                <i class="fas fa-graduation-cap mr-3 text-xl"></i>
+                                <span>Master en Marketing Digital - Paris Dauphine</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-certificate mr-3 text-xl"></i>
+                                <span>Certifications Google Ads, Facebook Blueprint, HubSpot</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-briefcase mr-3 text-xl"></i>
+                                <span>8 ans d'expérience en agence et freelance</span>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Sarah L.</h4>
-                            <p class="text-sm text-gray-500">Directrice Marketing</p>
-                        </div>
+                        <button id="download-btn" class="bg-white text-indigo-900 px-6 py-3 rounded-md font-bold hover:bg-indigo-100 transition duration-300 w-full md:w-auto">
+                            <i class="fas fa-download mr-2"></i> Télécharger mon CV
+                        </button>
                     </div>
-                    <p class="text-gray-600 italic">
-                        "GA Manager a révolutionné notre approche digitale. En 3 mois, nos ventes en ligne ont augmenté de 60% grâce à une stratégie publicitaire parfaitement ciblée."
-                    </p>
-                    <div class="mt-4 flex">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-full h-full object-cover">
+                    <div class="md:w-1/2 p-8 md:p-12 flex items-center justify-center">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="CV" class="w-full max-w-xs rounded-lg shadow-xl">
+                            <div class="absolute -bottom-4 -right-4 bg-white p-3 rounded-lg shadow-md">
+                                <i class="fas fa-file-pdf text-4xl text-red-500"></i>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Thomas R.</h4>
-                            <p class="text-sm text-gray-500">CEO Startup Tech</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">
-                        "La mise en place de Google Analytics 4 et des tableaux de bord personnalisés nous a donné une visibilité inédite sur notre audience. Un travail professionnel et pédagogique."
-                    </p>
-                    <div class="mt-4 flex">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Élodie M.</h4>
-                            <p class="text-sm text-gray-500">Responsable E-commerce</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">
-                        "Un accompagnement sur mesure qui a permis d'optimiser notre budget publicitaire tout en augmentant nos conversions. Réactif et à l'écoute, je recommande vivement !"
-                    </p>
-                    <div class="mt-4 flex">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
                     </div>
                 </div>
             </div>
@@ -369,57 +420,88 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-blue-50 rounded-xl p-8 md:p-12">
-                <div class="md:flex md:items-center md:space-x-12">
-                    <div class="md:w-1/2 mb-10 md:mb-0">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Prêt à booster votre marketing digital ?</h2>
-                        <p class="text-gray-600 mb-6 text-lg">
-                            Que vous ayez un projet précis ou simplement des questions, n'hésitez pas à me contacter. Je réponds généralement sous 24h.
-                        </p>
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <i class="fas fa-envelope text-blue-600 text-xl mr-4"></i>
-                                <span class="text-gray-700">contact@gamanager.com</span>
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contactez-moi</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">Prêt à booster votre présence digitale? Discutons de votre projet.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 md:p-12 bg-gray-50">
+                        <h3 class="text-2xl font-bold mb-6">Informations de contact</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-600">contact@votrenom.com</p>
+                                </div>
                             </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-phone-alt text-blue-600 text-xl mr-4"></i>
-                                <span class="text-gray-700">+33 6 12 34 56 78</span>
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Téléphone</h4>
+                                    <p class="text-gray-600">+33 6 12 34 56 78</p>
+                                </div>
                             </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-map-marker-alt text-blue-600 text-xl mr-4"></i>
-                                <span class="text-gray-700">Paris, France</span>
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Localisation</h4>
+                                    <p class="text-gray-600">Paris, France</p>
+                                    <p class="text-gray-600">Disponible pour des missions en remote</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Suivez-moi</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-indigo-100 text-indigo-600 p-3 rounded-full hover:bg-indigo-200 transition duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-indigo-100 text-indigo-600 p-3 rounded-full hover:bg-indigo-200 transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-indigo-100 text-indigo-600 p-3 rounded-full hover:bg-indigo-200 transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-indigo-100 text-indigo-600 p-3 rounded-full hover:bg-indigo-200 transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="md:w-1/2">
-                        <form class="space-y-4">
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <h3 class="text-2xl font-bold mb-6">Envoyez un message</h3>
+                        <form id="contact-form" class="space-y-4">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <label for="name" class="block font-medium mb-1">Nom complet</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <label for="email" class="block font-medium mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             </div>
                             <div>
-                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Sujet</label>
-                                <select id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
-                                    <option value="">Sélectionnez un sujet</option>
-                                    <option value="audit">Audit analytique</option>
-                                    <option value="campaign">Campagne publicitaire</option>
-                                    <option value="training">Formation</option>
-                                    <option value="other">Autre</option>
-                                </select>
+                                <label for="subject" class="block font-medium mb-1">Sujet</label>
+                                <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             </div>
                             <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                <label for="message" class="block font-medium mb-1">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
                             </div>
-                            <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-                                Envoyer le message
-                                <i class="fas fa-paper-plane ml-2"></i>
+                            <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-md font-bold hover:bg-indigo-700 transition duration-300 w-full">
+                                Envoyer le message <i class="fas fa-paper-plane ml-2"></i>
                             </button>
                         </form>
                     </div>
@@ -430,57 +512,71 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="md:flex md:justify-between md:items-center">
-                <div class="mb-8 md:mb-0">
-                    <a href="#" class="text-xl font-semibold text-white">GA Manager</a>
-                    <p class="mt-2 text-gray-400">Expert en marketing digital et analyse de données.</p>
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="font-bold text-xl">VotreNom</span>
+                    </div>
+                    <p class="text-gray-400">Expert en marketing digital freelance. Stratégies sur mesure pour booster votre business en ligne.</p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
-                    <div>
-                        <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Navigation</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
-                            <li><a href="#portfolio" class="text-gray-400 hover:text-white transition">Réalisations</a></li>
-                            <li><a href="#about" class="text-gray-400 hover:text-white transition">À propos</a></li>
-                            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Services</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Analyse & Stratégie</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Publicité Digitale</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Optimisation</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Formation</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Réseaux</h3>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-gray-400 hover:text-white transition">
-                                <i class="fab fa-linkedin-in text-xl"></i>
-                            </a>
-                            <a href="#" class="text-gray-400 hover:text-white transition">
-                                <i class="fab fa-malt text-xl"></i>
-                            </a>
-                            <a href="#" class="text-gray-400 hover:text-white transition">
-                                <i class="fab fa-twitter text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition duration-300">Stratégie Marketing</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Publicité en Ligne</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">SEO & Content</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Réseaux Sociaux</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Liens utiles</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition duration-300">Accueil</a></li>
+                        <li><a href="#services" class="hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-white transition duration-300">Réalisations</a></li>
+                        <li><a href="#contact" class="hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Abonnez-vous pour recevoir des conseils marketing exclusifs.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 rounded-l-md focus:outline-none text-gray-900 w-full">
+                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-r-md hover:bg-indigo-700 transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-            <div class="mt-12 pt-8 border-t border-gray-800">
-                <p class="text-gray-400 text-sm text-center">&copy; 2023 GA Manager. Tous droits réservés.</p>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 VotreNom. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
         // Mobile menu toggle
-        document.getElementById('menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
         // Smooth scrolling for anchor links
@@ -488,59 +584,78 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
-                document.getElementById('mobile-menu').classList.add('hidden');
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Highlight active nav link on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', function() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active-nav');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active-nav');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
 
-        // Simple form validation
-        const contactForm = document.querySelector('form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+        // Download CV button
+        const downloadBtn = document.getElementById('download-btn');
+        downloadBtn.addEventListener('click', () => {
+            // In a real scenario, this would link to your actual CV file
+            alert('Téléchargement du CV en cours...');
+            // window.location.href = 'path-to-your-cv.pdf';
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the data to a server
+            console.log({ name, email, subject, message });
+            
+            // Show success message
+            alert(`Merci ${name}, votre message a été envoyé avec succès! Je vous répondrai dès que possible.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.card-hover, .stats-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
                 
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-                
-                if (!name || !email || !subject || !message) {
-                    alert('Veuillez remplir tous les champs du formulaire.');
-                    return;
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
                 }
-                
-                // Here you would typically send the form data to a server
-                alert('Merci pour votre message ! Je vous répondrai dès que possible.');
-                contactForm.reset();
             });
-        }
+        };
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.card-hover, .stats-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+        });
+
+        // Run on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
     </script>
 </body>
 </html>
