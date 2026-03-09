@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LeadStatus {
+  nouveau
+  contacte
+  devis_envoye
+  client_gagne
+  perdu
+}
+
+enum AdminRole {
+  admin
+  editeur
+  consultation
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         AdminRole @default(consultation)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  adminLogs    AdminLog[]
+}
+
+model Lead {
+  id          String     @id @default(cuid())
+  nom         String
+  email       String
+  telephone   String?
+  entreprise  String?
+  message     String
+  source      String
+  statut      LeadStatus @default(nouveau)
+  noteInterne String?
+  assignedTo  String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model BlogPost {
+  id             String   @id @default(cuid())
+  title          String
+  slug           String   @unique
+  content        String
+  image          String?
+  author         String
+  category       String
+  seoTitle       String?
+  seoDescription String?
+  published      Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  priceHint   String?
+  image       String?
+  displayOrder Int     @default(0)
+}
+
+model Testimonial {
+  id        String @id @default(cuid())
+  client    String
+  company   String?
+  photo     String?
+  review    String
+  rating    Int
+}
+
+model SeoEntry {
+  id              String @id @default(cuid())
+  pageKey         String @unique
+  metaTitle       String
+  metaDescription String
+  slug            String
+  schemaMarkup    String?
+  openGraph       String?
+}
+
+model NewsletterEmail {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  segment   String?
+  createdAt DateTime @default(now())
+}
+
+model SiteSetting {
+  id              String @id @default(cuid())
+  siteName        String
+  contactEmail    String
+  logo            String?
+  favicon         String?
+  socials         Json?
+  trackingScripts String?
+}
+
+model AdminLog {
+  id          String   @id @default(cuid())
+  adminUserId String
+  action      String
+  entity      String
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  adminUser   AdminUser @relation(fields: [adminUserId], references: [id])
+}
